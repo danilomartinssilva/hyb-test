@@ -7,6 +7,9 @@ import ExtractScreen from '../screens/ExtractScreen';
 import PayScreen from '../screens/PayScreen';
 import PixScreen from '../screens/PixScreen';
 import TransferScreen from '../screens/TransferScreen';
+import { NAVIGATORS, SCREENS } from './constants/route-names';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // import { Container } from './styles';
 
@@ -15,10 +18,10 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 const ExtractStack = ()=>{
   return (
-    <Stack.Navigator initialRouteName = "ExtractScreen" 
+    <Stack.Navigator initialRouteName = {SCREENS.EXTRACT_NAVIGATOR_SCREENS.EXTRACT} 
 
     >
-      <Stack.Screen component = {ExtractScreen} name="ExtractScreen"
+      <Stack.Screen component = {SCREENS.EXTRACT_NAVIGATOR_SCREENS.Component} name={SCREENS.EXTRACT_NAVIGATOR_SCREENS.EXTRACT}
       
        options = {{headerShown:false}}></Stack.Screen>
     </Stack.Navigator>
@@ -26,10 +29,10 @@ const ExtractStack = ()=>{
 }
 const CreditPixStack = ()=>{
   return (
-    <Stack.Navigator initialRouteName = "ExtractScreen" 
+    <Stack.Navigator initialRouteName = {SCREENS.CREDIT_PIX_NAVIGATOR_SCREEN.CREDIT_PIX} 
    
     >
-      <Stack.Screen component = {ExtractScreen} name="ExtractScreen"
+      <Stack.Screen component = {SCREENS.CREDIT_PIX_NAVIGATOR_SCREEN.Component} name={SCREENS.CREDIT_PIX_NAVIGATOR_SCREEN.CREDIT_PIX}
       
        options = {{headerShown:false}}></Stack.Screen>
     </Stack.Navigator>
@@ -38,10 +41,10 @@ const CreditPixStack = ()=>{
 
 const PixStack = ()=>{
   return (
-    <Stack.Navigator initialRouteName = "PixScreen" 
+    <Stack.Navigator initialRouteName = {SCREENS.PIX_NAVIGATOR_SCREENS.PIX} 
   
     >
-      <Stack.Screen component = {PixScreen} name="PixScreen"
+      <Stack.Screen component = {SCREENS.PIX_NAVIGATOR_SCREENS.Component} name={SCREENS.PIX_NAVIGATOR_SCREENS.PIX}
       
        options = {{headerShown:false}}></Stack.Screen>
     </Stack.Navigator>
@@ -49,10 +52,10 @@ const PixStack = ()=>{
 }
 const PayStack = ()=>{
   return (
-    <Stack.Navigator initialRouteName = "PayScreen" 
+    <Stack.Navigator initialRouteName = {SCREENS.PAY_NAVIGATOR_SCREEN.PAY} 
    
     >
-      <Stack.Screen component = {PayScreen} name="PayScreen"
+      <Stack.Screen component = {SCREENS.PAY_NAVIGATOR_SCREEN.Component} name={SCREENS.PAY_NAVIGATOR_SCREEN.PAY}
       
        options = {{headerShown:false}}></Stack.Screen>
     </Stack.Navigator>
@@ -60,10 +63,10 @@ const PayStack = ()=>{
 }
 const TransferStack = ()=>{
   return (
-    <Stack.Navigator initialRouteName = "TransferScreen" 
+    <Stack.Navigator initialRouteName = {SCREENS.TRANSFER_NAVIGATOR_SCREEN.TRANSFER} 
    
     >
-      <Stack.Screen component = {TransferScreen} name="TransferScreen"
+      <Stack.Screen component = {SCREENS.TRANSFER_NAVIGATOR_SCREEN.Component} name={SCREENS.TRANSFER_NAVIGATOR_SCREEN.TRANSFER}
       
        options = {{headerShown:false}}></Stack.Screen>
     </Stack.Navigator>
@@ -73,7 +76,21 @@ const TransferStack = ()=>{
 
 const AppStack: React.FC = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator  screenOptions = {({route})=>({
+    
+      tabBarIcon:({focused,color,size}) =>{
+        return (
+         <Ionicons 
+         name = "ios-add"
+         />
+        )
+      }
+      
+      
+      
+    
+    })}
+      >
       <Tab.Screen name="ExtractStack"  component = {ExtractStack} options = {{headerShown:false,title:"Extrato"}}/>
       <Tab.Screen name="CreditPixStack"  component = {CreditPixStack} options = {{headerShown:false,title:"Pix Crédito"}}/>
       <Tab.Screen name="PixStack"  component = {PixStack} options = {{headerShown:false,title:"Pix "}}/>
