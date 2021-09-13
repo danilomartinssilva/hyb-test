@@ -32,6 +32,7 @@ export const NAVIGATORS = {
   PIX_NAVIGATOR:"PixStack",
   CREDIT_PIX_NAVIGATOR:"CreditPixStack",
   PAY_NAVIGATOR:"PayStack",
+  TRANSFER_NAVIGATOR:"TransferStack"
 }
 
 export const SCREENS = {

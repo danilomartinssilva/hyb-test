@@ -8,8 +8,9 @@ import PayScreen from '../screens/PayScreen';
 import PixScreen from '../screens/PixScreen';
 import TransferScreen from '../screens/TransferScreen';
 import { NAVIGATORS, SCREENS } from './constants/route-names';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import * as colors from '../assets/theme/colors'
+import { StyleSheet } from 'react-native';
 
 // import { Container } from './styles';
 
@@ -76,19 +77,39 @@ const TransferStack = ()=>{
 
 const AppStack: React.FC = () => {
   return (
-    <Tab.Navigator  screenOptions = {({route})=>({
-    
-      tabBarIcon:({focused,color,size}) =>{
+    <Tab.Navigator  
+  
+    screenOptions = {({route})=>({  
+      tabBarStyle:{
+        backgroundColor:colors.gray,
+        borderTopWidth:StyleSheet.hairlineWidth,
+        height: 50
+      },
+        tabBarLabelStyle:{
+        color: colors.grayLight,
+        fontSize:12
+      },  
+      tabBarIcon:({focused}) =>{
+        let iconName:string="";        
+        if(route.name===NAVIGATORS.EXTRACT_NAVIGATOR)        
+        iconName = 'card-bulleted'
+        else if (route.name===NAVIGATORS.PIX_NAVIGATOR)
+        iconName = "bank-transfer"
+        else if (route.name===NAVIGATORS.PAY_NAVIGATOR){
+          iconName="transfer-left"
+        }
+        else if (route.name===NAVIGATORS.CREDIT_PIX_NAVIGATOR)
+        iconName="bank-transfer-in"
+        else if (route.name===NAVIGATORS.TRANSFER_NAVIGATOR)
+        iconName = "bank-transfer-out"        
         return (
-         <Ionicons 
-         name = "ios-add"
+         <MaterialCommunityIcons 
+         name = {iconName}
+         color={!focused ? colors.dark : colors.secondary} 
+         size={25}
          />
         )
       }
-      
-      
-      
-    
     })}
       >
       <Tab.Screen name="ExtractStack"  component = {ExtractStack} options = {{headerShown:false,title:"Extrato"}}/>
