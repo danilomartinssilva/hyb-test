@@ -10,6 +10,7 @@ import CardMovement from '../../components/CardMovement';
 import MovementsDTO from '../../dtos/MovementsDTO';
 import ConfigurationPage from '../../dtos/PageConfigurationDTO';
 import BalanceDTO from '../../dtos/BalanceDTO';
+import LottieView from 'lottie-react-native';
 
 // import { Container } from './styles';
 
@@ -54,33 +55,44 @@ const ExtractScreen: React.FC = () => {
 
     handleGetBalance();
     hadleLoadMovements(0);
-
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }, []);
 
   useEffect(() => {}, []);
 
   return (
     <>
-      <View style={{flex: 1}}>
-        <View style={{flex: 0.5}}>
-          <Header />
-          <CardResult value={balance?.availableBalance} />
-        </View>
-        <View style={{flex: 1}}>
-          <FlatList
-            data={movements}
-            onEndReachedThreshold={0.1}
-            onEndReached={() => {
-              hadleLoadMovements();
-            }}
-            style={{marginBottom: 24}}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => <CardMovement {...item} />}
-          />
-        </View>
-      </View>
-      <StatusBar translucent backgroundColor={colors.secondary} />
+      {loading ? (
+        <LottieView
+          source={require('../../assets/aninations/loading.json')}
+          loop
+          autoPlay
+        />
+      ) : (
+        <>
+          <View style={{flex: 1}}>
+            <View style={{flex: 0.5}}>
+              <Header />
+              <CardResult value={balance?.availableBalance} />
+            </View>
+            <View style={{flex: 1}}>
+              <FlatList
+                data={movements}
+                onEndReachedThreshold={0.1}
+                onEndReached={() => {
+                  hadleLoadMovements();
+                }}
+                style={{marginBottom: 24}}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => <CardMovement {...item} />}
+              />
+            </View>
+          </View>
+          <StatusBar translucent backgroundColor={colors.secondary} />
+        </>
+      )}
     </>
   );
 };

@@ -5,6 +5,7 @@ import ButtonForm from '../../components/ButtonForm';
 import InputForm from '../../components/InputForm';
 import {SCREENS} from '../../routes/constants/route-names';
 
+
 import {Container} from './styles';
 interface AuthProps {
   navigation: any;
@@ -33,6 +34,7 @@ function AuthScreen({navigation}: AuthProps) {
           Entrar
         </ButtonForm>
       </Container>
+      
     </>
   );
 }
