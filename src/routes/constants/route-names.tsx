@@ -1,8 +1,14 @@
+import AuthScreen from '../../screens/AuthScreen';
 import CreditPixScren from '../../screens/CreditPixScren';
 import ExtractScreen from '../../screens/ExtractScreen';
 import PayScreen from '../../screens/PayScreen';
 import PixScreen from '../../screens/PixScreen';
 import TransferScreen from '../../screens/TransferScreen';
+
+const AUTH_NAVIGATOR_SCREENS = {
+  AUTH: 'AuthScreen',
+  Component: AuthScreen,
+};
 
 const EXTRACT_NAVIGATOR_SCREENS = {
   EXTRACT: 'ExtractScreen',
@@ -32,6 +38,7 @@ export const NAVIGATORS = {
   CREDIT_PIX_NAVIGATOR: 'CreditPixStack',
   PAY_NAVIGATOR: 'PayStack',
   TRANSFER_NAVIGATOR: 'TransferStack',
+  AUTH_NAVIGATOR: 'AuthStack',
 };
 
 export const SCREENS = {
@@ -40,4 +47,5 @@ export const SCREENS = {
   CREDIT_PIX_NAVIGATOR_SCREEN,
   EXTRACT_NAVIGATOR_SCREENS,
   PIX_NAVIGATOR_SCREENS,
+  AUTH_NAVIGATOR_SCREENS,
 };
