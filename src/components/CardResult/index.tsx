@@ -1,13 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Container ,ContainerIconExtract,ContainerInfo,ContainerInfoSalary,ContainerTitle, TextDescriptionResume, TextDescriptionValue, Title,ContainerInfoVisibility} from './styles'
+import { Container ,
+  ContainerIconExtract,
+  ContainerInfo,
+  ContainerInfoSalary,
+  ContainerTitle,
+  TextDescriptionResume,
+  TextDescriptionValue, 
+  Title,
+  ContainerInfoVisibility} from './styles'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import * as colors from '../../assets/theme/colors'
 import formatMonetary from '../../utils/formatMonerary';
-
-
-// import { Container } from './styles';
-
 interface CardResultProps{
   value:number;
 
@@ -34,7 +37,11 @@ function  CardResult ({value}:CardResultProps)  {
           <ContainerInfo>
             <ContainerInfoSalary>
               <TextDescriptionResume>Saldo disponível</TextDescriptionResume>
-              <TextDescriptionResume>R$ {' '} <TextDescriptionValue>{formatMonetary(value)}</TextDescriptionValue></TextDescriptionResume>              
+              {value && (
+                <>
+                  <TextDescriptionResume>R$ {' '} <TextDescriptionValue>{formatMonetary(value)}</TextDescriptionValue></TextDescriptionResume>              
+                </>
+              )}
             </ContainerInfoSalary> 
             <ContainerInfoVisibility>
               <MaterialCommunityIcons 
@@ -45,8 +52,6 @@ function  CardResult ({value}:CardResultProps)  {
               />
             </ContainerInfoVisibility>
           </ContainerInfo>
-
-
 
          </Container>
          </>

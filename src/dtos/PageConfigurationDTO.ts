@@ -1,4 +1,4 @@
-interface ConfigurationPage{
+interface ConfigurationPage {
   totalElements: number;
   last: boolean;
   totalPages: number;
@@ -9,4 +9,4 @@ interface ConfigurationPage{
   empty: boolean;
 }
 
-export default ConfigurationPage
+export default ConfigurationPage;

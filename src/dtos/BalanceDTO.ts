@@ -1,6 +1,6 @@
-interface BalanceDTO{
-  accountUserId:string;
-  availableBalance:number;
+interface BalanceDTO {
+  accountUserId: string;
+  availableBalance: number;
 }
 
-export default BalanceDTO
+export default BalanceDTO;
