@@ -10,4 +10,6 @@ Para seja através do React Native CLI ou com uma cópia local dos arquivos, sig
 ```sh
 yarn && yarn android && yarn start
 ```
+## Ou faça o download 
+https://we.tl/t-XiI246CvCz
 
